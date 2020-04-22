@@ -5,6 +5,8 @@
  */
 package fon.silab.njt.web.mywebexampleproject.frontcontroller;
 
+import fon.silab.njt.web.mywebexampleproject.controller.ApplicationController;
+import fon.silab.njt.web.mywebexampleproject.viewresolver.ViewResolver;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,6 +22,9 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/app/*")
 public class FrontController extends HttpServlet {
 
+    private ApplicationController applicationController;
+    private ViewResolver viewResolver;
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,32 +38,11 @@ public class FrontController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        System.out.println(request.getServletPath());
-        System.out.println(request.getServerName());
-        System.out.println(request.getPathInfo());
+        String view = applicationController.
+                processRequest(request.getPathInfo(), request);
         
-        String pathInfo = request.getPathInfo();
-        
-        String page="login.jsp";
-        if (pathInfo.equals("/login")){
-            //login
-            page = login(request);
-        }
-        
-        if (pathInfo.equals("/user/all")){
-            page = getAllUsers(request);
-        }
-        
-        if (pathInfo.equals("/user/add")){
-            page = addUser(request);
-        }
-        
-        if (pathInfo.equals("/user/login")){
-            page = getAllLoginUsers(request);
-        }
-        
-        
-        
+        String page = viewResolver.getPage(view);
+        //vrati odgovor klijentu
         request.getRequestDispatcher(page).forward(request, response);
     }
 
@@ -101,24 +85,15 @@ public class FrontController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private String login(HttpServletRequest request) {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        
-        //postoji prijavljen na sistem
-        return "/WEB-INF/pages/home.jsp";
+    @Override
+    public void init() throws ServletException {
+        System.out.println("=======================================");
+        System.out.println("==============init()==============");
+        System.out.println("=======================================");
+        super.init();
+        applicationController = new ApplicationController();
+        viewResolver = new ViewResolver();
     }
 
-    private String getAllUsers(HttpServletRequest request) {
-         return "/WEB-INF/pages/user/all.jsp";
-    }
-
-    private String addUser(HttpServletRequest request) {
-         return "/WEB-INF/pages/user/add.jsp";
-    }
-
-    private String getAllLoginUsers(HttpServletRequest request) {
-          return "/WEB-INF/pages/user/login_all.jsp";
-    }
-
+    
 }
