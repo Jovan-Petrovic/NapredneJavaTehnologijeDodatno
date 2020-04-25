@@ -7,6 +7,8 @@ package fon.silab.njt.web.mywebexampleproject.action.impl;
 
 import fon.silab.njt.web.mywebexampleproject.action.AbstractAction;
 import fon.silab.njt.web.mywebexampleproject.constants.PageConstants;
+import fon.silab.njt.web.mywebexampleproject.model.User;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -26,9 +28,23 @@ public class LoginAction extends AbstractAction{
         System.out.println("====================================================");
         
         //proveri da li postoji
-        
-        //uradi ako jos nesto treba
-        return PageConstants.VIEW_LOGIN;
+        User user=findUser(request, username);
+        if (user==null){
+            request.setAttribute("message", "User does not exist!");
+             return PageConstants.VIEW_LOGIN;
+        }else{
+            //korisnik postoji
+            request.getSession(true).setAttribute("loginUser", user);
+            return PageConstants.VIEW_HOME;
+        }
+    }
+
+    private User findUser(HttpServletRequest request, String username) {
+        List<User> users = (List<User>) request.getServletContext().getAttribute("users");
+        for (User user : users) {
+            if (user.getUsername().equals(username)) return user;
+        }
+        return null;
     }
     
 }

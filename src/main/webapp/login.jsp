@@ -13,7 +13,8 @@
     </head>
     <body>
         <h1>This is login page!</h1>
-        
+        ${message} <%-- Prvo trazi message u stranici, pa u request scope-u, pa u session scope-u, pa u application scope-u
+                    Mogli smo da kazemo i ${requestScope.message} --%>
         <form action="/njt/app/login" method="post">
             Username:
             <div>

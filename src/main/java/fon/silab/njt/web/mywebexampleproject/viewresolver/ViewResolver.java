@@ -19,6 +19,7 @@ public class ViewResolver {
     public ViewResolver(){
         viewPageMap=new HashMap<String, String>(){
             {   //key = view, value=page
+                put(PageConstants.VIEW_HOME,PageConstants.PAGE_HOME );
                 put(PageConstants.VIEW_LOGIN,PageConstants.PAGE_LOGIN );
                 put(PageConstants.VIEW_DEFAULT_ERROR,PageConstants.PAGE_DEFAULT_ERROR );
                 put(PageConstants.VIEW_ALL_USERS,PageConstants.PAGE_ALL_USERS );

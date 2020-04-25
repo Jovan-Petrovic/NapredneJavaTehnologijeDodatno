@@ -12,17 +12,11 @@
         <title>Home</title>
     </head>
     <body>
-        <h1>This is home page</h1>
+        <%@include file="template/header.jsp" %>
+        <%@include file="template/menu.jsp" %>
         
-        <div>
-            <a href="/njt/app/user/all"> All users</a>
-        </div>
-        <div>
-            <a href="/njt/app/user/add"> Add user</a>
-        </div>
-        <div>
-            <a href="/njt/app/user/login"> Current users on system</a>
-        </div>
+        <h1>This is home page. Welcome...</h1>
         
+        <%@include file="template/footer.jsp" %>
     </body>
 </html>

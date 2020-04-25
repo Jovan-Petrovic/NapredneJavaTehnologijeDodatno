@@ -9,6 +9,7 @@ import fon.silab.njt.web.mywebexampleproject.action.AbstractAction;
 import fon.silab.njt.web.mywebexampleproject.action.impl.AddUserAction;
 import fon.silab.njt.web.mywebexampleproject.action.impl.AllUsersAction;
 import fon.silab.njt.web.mywebexampleproject.action.impl.LoginAction;
+import fon.silab.njt.web.mywebexampleproject.action.impl.SaveUserAction;
 import fon.silab.njt.web.mywebexampleproject.constants.ActionConstants;
 
 /**
@@ -26,6 +27,9 @@ public class ActionFactory {
         }
         if (actionName.equals(ActionConstants.URL_ADD_USER)) {
             action = new AddUserAction();
+        }
+        if (actionName.equals(ActionConstants.URL_SAVE_USER)) {
+            action = new SaveUserAction();
         }
         return action;
     }

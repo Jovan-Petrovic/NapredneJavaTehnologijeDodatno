@@ -13,4 +13,5 @@ public interface ActionConstants {
     public static final String URL_LOGIN = "/login";
     public static final String URL_ALL_USERS = "/user/all";
     public static final String URL_ADD_USER = "/user/add";
+    public static final String URL_SAVE_USER = "/user/save";
 }
