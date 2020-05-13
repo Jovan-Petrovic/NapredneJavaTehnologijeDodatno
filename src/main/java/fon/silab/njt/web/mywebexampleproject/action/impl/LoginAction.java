@@ -10,11 +10,13 @@ import fon.silab.njt.web.mywebexampleproject.constants.PageConstants;
 import fon.silab.njt.web.mywebexampleproject.model.User;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author KORISNIK
  */
+@Component
 public class LoginAction extends AbstractAction{
 
     @Override

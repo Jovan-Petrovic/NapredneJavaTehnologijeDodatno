@@ -8,11 +8,13 @@ package fon.silab.njt.web.mywebexampleproject.action.impl;
 import fon.silab.njt.web.mywebexampleproject.action.AbstractAction;
 import fon.silab.njt.web.mywebexampleproject.constants.PageConstants;
 import javax.servlet.http.HttpServletRequest;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author KORISNIK
  */
+@Component
 public class AddUserAction extends AbstractAction{
 
     @Override

@@ -4,24 +4,30 @@
     Author     : user
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        Login as:${sessionScope.loginUser.username}, <a href="#">Logout</a>
-        <div>
-            <a href="/njt/app/user/all"> All users</a>
-        </div>
-        <div>
-            <a href="/njt/app/user/add"> Add user</a>
-        </div>
-        <div>
-            <a href="/njt/app/user/login"> Current users on system</a>
-        </div>
-            
-    </body>
-</html>
+<div class="container">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <!-- Brand-->
+        <a class="navbar-brand" href="#">Logo</a>
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/njt/app/user/all">All users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/njt/app/user/add">Add user</a>
+            </li>
+            <!-- Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" role="button" data-toggle="dropdown">
+                    Profile
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">My Profile</a>
+                    <a class="dropdown-item" href="/njt/app/logout">Logout</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    Login as:${sessionScope.loginUser.username}
+</div>
+

@@ -7,6 +7,8 @@ package fon.silab.njt.web.mywebexampleproject.action.impl;
 
 import fon.silab.njt.web.mywebexampleproject.action.AbstractAction;
 import fon.silab.njt.web.mywebexampleproject.constants.PageConstants;
+import fon.silab.njt.web.mywebexampleproject.model.User;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Component;
 
@@ -15,14 +17,13 @@ import org.springframework.stereotype.Component;
  * @author KORISNIK
  */
 @Component
-public class AllUsersAction extends AbstractAction{
+public class LogoutAction extends AbstractAction{
 
     @Override
     public String execute(HttpServletRequest request) {
-        //uzmi sve korisnike sistema i ubaci u request
-        
-        //vrati stranicu za prikaz svih korisnika
-        return PageConstants.VIEW_ALL_USERS;
+        request.getSession().invalidate();
+        request.setAttribute("message", "User success logout!");
+        return PageConstants.VIEW_LOGIN;
     }
-    
+
 }

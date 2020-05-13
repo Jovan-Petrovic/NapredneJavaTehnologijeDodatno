@@ -8,11 +8,13 @@ package fon.silab.njt.web.mywebexampleproject.viewresolver;
 import fon.silab.njt.web.mywebexampleproject.constants.PageConstants;
 import java.util.HashMap;
 import java.util.Map;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author KORISNIK
  */
+@Component
 public class ViewResolver {
     private final Map<String, String> viewPageMap;
     

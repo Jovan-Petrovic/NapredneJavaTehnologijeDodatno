@@ -11,25 +11,43 @@ import fon.silab.njt.web.mywebexampleproject.action.impl.AllUsersAction;
 import fon.silab.njt.web.mywebexampleproject.action.impl.LoginAction;
 import fon.silab.njt.web.mywebexampleproject.action.impl.SaveUserAction;
 import fon.silab.njt.web.mywebexampleproject.constants.ActionConstants;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author KORISNIK
  */
+@Component
 public class ActionFactory {
-    public static AbstractAction createActionFactory(String actionName) {
+    
+    @Autowired
+    private AbstractAction loginAction;
+    @Autowired
+    private AbstractAction allUsersAction;
+    @Autowired
+    private AbstractAction addUserAction;
+    @Autowired
+    private AbstractAction saveUserAction;
+    @Autowired
+    private AbstractAction logoutAction;
+    
+    public AbstractAction createActionFactory(String actionName) {
         AbstractAction action = null;
         if (actionName.equals(ActionConstants.URL_LOGIN)) {
-            action = new LoginAction();
+            action = loginAction;
         }
         if (actionName.equals(ActionConstants.URL_ALL_USERS)) {
-            action = new AllUsersAction();
+            action = allUsersAction;
         }
         if (actionName.equals(ActionConstants.URL_ADD_USER)) {
-            action = new AddUserAction();
+            action = addUserAction;
         }
         if (actionName.equals(ActionConstants.URL_SAVE_USER)) {
-            action = new SaveUserAction();
+            action = saveUserAction;
+        }
+        if (actionName.equals(ActionConstants.URL_LOGOUT)) {
+            action = logoutAction;
         }
         return action;
     }

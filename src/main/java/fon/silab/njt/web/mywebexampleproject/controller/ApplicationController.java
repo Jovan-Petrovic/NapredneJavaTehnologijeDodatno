@@ -9,17 +9,23 @@ import fon.silab.njt.web.mywebexampleproject.action.AbstractAction;
 import fon.silab.njt.web.mywebexampleproject.action.factory.ActionFactory;
 import fon.silab.njt.web.mywebexampleproject.constants.PageConstants;
 import javax.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author KORISNIK
  */
+@Component
 public class ApplicationController {
 
+    @Autowired
+    private ActionFactory actionFactory;
+    
     public String processRequest(String pathInfo, HttpServletRequest request) {
         String nextPage = PageConstants.VIEW_DEFAULT_ERROR;
         
-        AbstractAction action = ActionFactory.createActionFactory(pathInfo);
+        AbstractAction action = actionFactory.createActionFactory(pathInfo);
         if (action != null) {
             nextPage = action.execute(request);
         }

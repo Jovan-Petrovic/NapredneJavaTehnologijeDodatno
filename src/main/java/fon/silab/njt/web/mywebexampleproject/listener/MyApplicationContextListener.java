@@ -5,11 +5,14 @@
  */
 package fon.silab.njt.web.mywebexampleproject.listener;
 
+import fon.silab.njt.web.mywebexampleproject.config.MyAppConfig;
 import fon.silab.njt.web.mywebexampleproject.model.User;
 import java.util.ArrayList;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
  * Web application lifecycle listener.
@@ -33,6 +36,10 @@ public class MyApplicationContextListener implements ServletContextListener {
         //lista korisnika
         sce.getServletContext().setAttribute("users", createUsers());
         //listu korisnika koji su trenutno prijavljeni na sistem
+        
+        // ucitaj spring context
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(MyAppConfig.class);
+        sce.getServletContext().setAttribute("applicationContext", applicationContext);
     }
 
     @Override
